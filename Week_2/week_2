@@ -1,0 +1,232 @@
+Grep command in Unix:
+
+ser@pavani:~$ cat> grepfilter.txt
+welcome to ubuntu
+hii this is linux / unix commands
+rgukt rajiv gandhi university knowledge technology
+
+user@pavani:~$ grep "rgukt" grepfilter.txt
+rgukt rajiv gandhi university knowledge technology
+
+//-n: Display the matched lines and their line numbers.
+user@pavani:~$ grep -n "unix" grepfilter.txt
+2:hii this is linux / unix commands
+
+//-h: Display the matched lines, but do not display the filenames.
+user@pavani:~$ grep -h "unix" grepfilter.txt
+hii this is linux / unix commands
+
+//-v: This prints out all the lines that do not matches the pattern
+user@pavani:~$ grep -v "unix" grepfilter.txt
+welcome to ubuntu
+rgukt rajiv gandhi university knowledge technology
+
+//-o :Print only the matched parts of a matching line, with each such part on a
+separate output line.
+user@pavani:~$ grep -o "unix" grepfilter.txt
+unix
+
+//-e : Specifies expression with this option. Can use multiple times.
+user@pavani:~$ grep -e "unix" grepfilter.txt
+hii this is linux / unix commands
+
+//-c: This prints only a count of the lines that match a pattern
+user@pavani:~$ grep -c "unix" grepfilter.txt
+1
+user@pavani:~$ grep -o "o" grepfilter.txt
+o
+o
+o
+o
+o
+o
+user@pavani:~$ grep -v "this" grepfilter.txt
+welcome to ubuntu
+rgukt rajiv gandhi university knowledge technology
+user@pavani:~$ grep -v "is" grepfilter.txt
+welcome to ubuntu
+rgukt rajiv gandhi university knowledge technology
+//-l: Displays list of a filenames only.
+user@pavani:~$ grep -l "this" grepfilter.txt
+grepfilter.txt
+
+user@pavani:~$ cat> monthfile.txt
+september
+february
+december
+may
+   Sort Command:
+ In Unix-based operating systems, the sort command is used to sort the lines of a text file or input stream.
+ 
+user@pavani:~$ $ sort -M monthfile.txt
+$: command not found
+user@pavani:~$  sort -M monthfile.txt
+february
+may
+september
+december
+
+user@pavani:~$ sort -n monthfile.txt
+december
+february
+may
+september
+user@pavani:~$ cat> numberfile.txt
+24 
+05
+8
+19
+//-n: Sorts a file numerically (interprets data as numbers).
+user@pavani:~$ sort -n numberfile.txt
+05
+8
+19
+24 
+user@pavani:~$ cat filesed.txt
+Unix
+ubuntu
+Rgukt Basar Nirmal
+     Sed Command in Unix:
+SED is a powerful text stream editor. Can do insertion, deletion,search and replace(substitution).
+SED command in unix supports regular expression which allows it
+perform complex pattern matching.
+
+//Replacing or substituting string
+user@pavani:~$ sed 's/Unix/UNIX/' filesed.txt
+UNIX
+ubuntu
+Rgukt Basar Nirmal
+user@pavani:~$ sed 's/ubuntu/UBUNTU/' filesed.txt
+Unix
+UBUNTU
+Rgukt Basar Nirmal
+user@pavani:~$ sed 's/Unix/pavani/' filesed.txt
+pavani
+ubuntu
+Rgukt Basar Nirmal
+user@pavani:~$ sed 's/ubuntu/window/' filesed.txt
+Unix
+window
+Rgukt Basar Nirmal
+//Sed ‘2d’ file1.txt : removing second line of the paragraph
+user@pavani:~$ sed '2d' filesed.txt
+Unix
+Rgukt Basar Nirmal
+user@pavani:~$ sed '2s/Unix/UNIX/2g' filesed.txt
+Unix
+ubuntu
+Rgukt Basar Nirmal
+
+//removing second line and 3rd line
+user@pavani:~$ sed '2,3d' filesed.txt
+Unix
+user@pavani:~$ sed 's/o/**/g' grepfilter.txt
+welc**me t** ubuntu
+hii this is linux / unix c**mmands
+rgukt rajiv gandhi university kn**wledge techn**l**gy
+    AWK command in Unix:
+awk is a powerful text processing tool available in Unix and Unix-
+like operating systems. It is particularly useful for processing
+structured text files, such as CSV files or log files.
+
+user@pavani:~$ cat> awkfile.txt
+venky window id  4567
+arun storage id  7665
+mark unix id 7532
+john linux id 6543
+
+//Splitting a Line Into Fields
+user@pavani:~$ awk '{print $1,$3}' awkfile.txt
+venky id
+arun id
+mark id
+john id
+user@pavani:~$ free m
+              total        used        free      shared  buff/cache   available
+Mem:        7915756     1142300     5395856      153236     1377600     6352472
+Swap:       2097148           0     2097148
+user@pavani:~$ awk '/unix/ {print}'awkfile.txt
+awk: 1: unexpected character '.'
+user@pavani:~$ awk '/unix/ {print}' awkfile.txt
+mark unix id 7532
+user@pavani:~$ 
+user@pavani:~$ awk '/Mem/{print}/' free -m
+awk: line 1: runaway regular expression / ...
+user@pavani:~$ awk '{print $2}' awkfile.txt
+window
+storage
+unix
+linux
+   shutdown command:
+   
+   The shutdown command in Linux is used to shutdown the system in
+a safe way. You can shutdown the machine immediately, or schedule
+a shutdown using 24 hour format.It brings the system down in a
+secure way. When the shutdown is initiated, all logged-in users and
+processes are notified that the system is going down, and no further
+logins are allowed.
+shutdown command:
+$ shutdown -H
+$shutdown -P
+$ shutdown -r now
+$ shutdown -r +5
+$ sudo shutdown 15:00
+$ sudo shutdown +10
+$ sudo shutdown -c
+
+      FTP Connection
+https://dlptest.com/ftp-test/-SEARCH IN GOOGLE
+FTP Test
+
+Our Public FTP test site info is below and can be used to upload test DLP files. The files will be stored for 10 minutes before being deleted.
+
+FTP URL: ftp.dlptest.com or ftp://ftp.dlptest.com/
+FTP User: dlpuser
+Password: rNrKYTX9g7z3RgJRmxWuGHbeu
+
+FileZilla Profile: https://dlptest.com/DLP_Test_FTP_FileZilla.xml
+
+user@pavani:~$ ftp ftp.dlptest.com
+Connected to ftp.dlptest.com.
+220 Welcome to the DLP Test FTP Server
+Name (ftp.dlptest.com:user): dlpuser
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+-rw-r--r--    1 1001     1001            0 Mar 26 10:42 actorstoday.txt
+-rw-r--r--    1 1001     1001            0 Mar 26 10:42 actorstomorrow.txt
+-rw-r--r--    1 1001     1001      1222112 Mar 26 10:42 test.csv
+226 Directory send OK.
+ftp> get actorstomorrow.txt
+local: actorstomorrow.txt remote: actorstomorrow.txt
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for actorstomorrow.txt (0 bytes).
+226 Transfer complete.
+ftp> get actorstoday.txt
+local: actorstoday.txt remote: actorstoday.txt
+200 PORT command successful. Consider using PASV.
+550 Failed to open file.
+ftp> exit
+221 Goodbye.
+
+    FTP Commands
+1. cd Changes the working directory on the remote host
+2. close Closes the FTP connection
+3. quit Quits FTP
+4. pwd displays the current working Directory on the rem
+remote host
+5.
+6.
+dis or ls Provides a Directory Listing of the current working
+directory
+help
+Displays a list of all client FTP commands
+7. remotehelp
+Displays a list of all server FTP commands
+8. type Allows the user to specify the file type
+9. struct specifies the files structure
